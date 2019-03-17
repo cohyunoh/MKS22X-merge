@@ -26,8 +26,6 @@ public class tester{
           t2 = System.currentTimeMillis();
           btime+= t2 - t1;
           if(!Arrays.equals(data1,data2)){
-            System.out.println(Arrays.toString(data2));
-            System.out.println(Arrays.toString(data1));
             System.out.println("FAIL TO SORT!");
             System.exit(0);
           }
