@@ -27,6 +27,8 @@ public class Merge{
       }else if(j > hi && i < middle + 1){
         newData[c] = data[i];
         i ++;
+      }else if(j > hi && i > middle){
+        data = newData;
       }else{
         if(data[j] > data[i]){
           newData[c] = data[i];
