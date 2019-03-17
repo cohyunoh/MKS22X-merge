@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
@@ -33,13 +34,5 @@ public class Merge{
       }
     }
     data = newData;
-  }
-
-  public static void main(String[] args) {
-    int[] ary = { 1, 9, 10, 55, 230, 500, 0, 5, 22, 55, 59,100 };
-    int[] aryCopy = ary;
-    mergesort(ary);
-    Arrays.sort(aryCopy);
-    System.out.println(Arrays.equals(aryCopy, ary));
   }
 }
