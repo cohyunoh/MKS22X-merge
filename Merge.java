@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
@@ -15,31 +16,30 @@ public class Merge{
   }
 
   private static void merge(int[] data, int lo, int hi, int middle){
-    int[] left = new int[middle - lo + 1];
-    int[] right = new int[hi - middle];
-    for(int i = lo; i < hi + 1; i++){
-      if(i <= middle){
-        left[i] = data[i];
-      }else{
-        right[i - middle - 1] = data[i];
-      }
-    }
     int i = 0;
-    int j = 0;
+    int j = middle + 1;
     int[] newData = new int[data.length];
     for(int c = 0; c < newData.length; c++){
-      if(left[i] < right[j]){
-        newData[c] = left[i];
-        if(i + 1 < left.length){
+      if(data[i] < data[j]){
+        newData[c] = data[i];
+        if(i + 1 < middle + 1){
           i++;
         }
       }else{
-        newData[c] = right[j];
-        if(j + 1 < right.length){
+        newData[c] = data[j];
+        if(j + 1 < hi){
           j++;
         }
       }
     }
     data = newData;
+  }
+
+  public static void main(String[] args) {
+    int[] ary = { 1, 9, 10, 55, 230, 500, 0, 5, 22, 55, 59,100 };
+    int[] aryCopy = ary;
+    mergesort(ary);
+    Arrays.sort(aryCopy);
+    System.out.println(Arrays.equals(aryCopy, ary));
   }
 }
