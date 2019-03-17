@@ -13,33 +13,43 @@ public class Merge{
     int middle = (lo + hi) / 2;
     mergesort(data, lo, middle);
     mergesort(data, middle + 1, hi);
-    merge(data, lo , hi, middle);
+    merge(data, lo, hi, middle);
   }
-
+  private static int[] makeList(int[] data, int lo, int hi){
+    int[] newData = new int[hi - lo + 1];
+    int j = 0;
+    for(int i = lo; i < hi + 1 && j < newData.length; i++){
+      newData[j] = data[i];
+      j++;
+    }
+    return newData;
+  }
   private static void merge(int[] data, int lo, int hi, int middle){
-    int i = lo;
-    int j = middle + 1;
-    int[] newData = new int[data.length];
-    for(int c = 0; c < newData.length; c++){
-      if(i > middle && j < hi + 1){
-        newData[c] = data[j];
-        j ++;
-      }else if(j > hi && i < middle + 1){
-        newData[c] = data[i];
-        i ++;
-      }else if(j > hi && i > middle){
-        data = newData;
-      }else{
-        if(data[j] > data[i]){
-          newData[c] = data[i];
-          i++;
+    int[] left = makeList(data, lo, middle);
+    int[] right = makeList(data, middle + 1, hi);
+    int r = 0;
+    int l = 0;
+    for(int i = lo; i < hi + 1; i++){
+      if(l >= left.length){
+        if(r < right.length){
+          data[i] = right[r];
+          r++;
+        }
+      }else if(r >= right.length){
+        if(l < left.length){
+          data[i] = left[l];
+          l++;
+        }
+      }else if(l < left.length && r < right.length){
+        if(left[l] < right[r]){
+          data[i] = left[l];
+          l++;
         }else{
-          newData[c] = data[j];
-          j++;
+          data[i] = right[r];
+          r++;
         }
       }
     }
-    data = newData;
   }
   public static void main(String[] args) {
 
