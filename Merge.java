@@ -8,20 +8,38 @@ public class Merge{
     if(lo >= hi){
       return ;
     }
-    mergesort(data, lo, (lo + hi) / 2);
-    mergesort(data, ((lo + hi) / 2) + 1, hi);
-    merge(data, lo , hi);
+    int middle = (lo + hi) / 2;
+    mergesort(data, lo, middle);
+    mergesort(data, middle + 1, hi);
+    merge(data, lo , hi, middle);
   }
 
-  private static void merge(int[] data, int lo, int hi){
-    int[] left = new int[((lo + hi) / 2) - lo];
-    int[] right = new int[hi - ((lo + hi) / 2) + 1];
+  private static void merge(int[] data, int lo, int hi, int middle){
+    int[] left = new int[middle - lo + 1];
+    int[] right = new int[hi - middle];
     for(int i = lo; i < hi + 1; i++){
-      if(i < (lo + hi) / 2){
+      if(i <= middle){
         left[i] = data[i];
       }else{
-        right[i - ((lo + hi) / 2)] = data[i];
+        right[i - middle - 1] = data[i];
       }
     }
+    int i = 0;
+    int j = 0;
+    int[] newData = new int[data.length];
+    for(int c = 0; c < newData.length; c++){
+      if(left[i] < right[j]){
+        newData[c] = left[i];
+        if(i + 1 < left.length){
+          i++;
+        }
+      }else{
+        newData[c] = right[j];
+        if(j + 1 < right.length){
+          j++;
+        }
+      }
+    }
+    data = newData;
   }
 }
