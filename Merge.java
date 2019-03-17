@@ -21,14 +21,18 @@ public class Merge{
     int j = middle + 1;
     int[] newData = new int[data.length];
     for(int c = 0; c < newData.length; c++){
-      if(data[i] < data[j]){
-        newData[c] = data[i];
-        if(i + 1 < middle + 1){
-          i++;
-        }
-      }else{
+      if(i > middle && j < hi + 1){
         newData[c] = data[j];
-        if(j + 1 < hi){
+        j ++;
+      }else if(j > hi && i < middle + 1){
+        newData[c] = data[i];
+        i ++;
+      }else{
+        if(data[j] > data[i]){
+          newData[c] = data[i];
+          i++;
+        }else{
+          newData[c] = data[j];
           j++;
         }
       }
