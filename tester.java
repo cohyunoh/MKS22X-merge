@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.Random;
 public class tester{
   public static void main(String[]args){
+    /*
     System.out.println("Size\t\tMax Value\tmerge/builtin ratio ");
     int[]MAX_LIST = {100000000,500,10};
     for(int MAX : MAX_LIST){
@@ -34,5 +35,9 @@ public class tester{
       }
       System.out.println();
     }
+    */
+    int[] ary = {1 , 3 , 4 , 2};
+    Merge.insertionsort(ary, 2, 3);
+    System.out.println(Arrays.toString(ary));
   }
 }
