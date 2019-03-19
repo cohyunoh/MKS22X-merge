@@ -4,19 +4,20 @@ import java.util.ArrayList;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
-    int k = 2;
+    int k = (int)( (float)(data.length) * 0.00005);
     mergesort(data, 0, data.length - 1, k);
   }
 
   private static void mergesort(int[]data, int lo, int hi, int k){
-    if(hi - lo + 1 == k){
+    if(hi - lo + 1 <= k){
       insertionsort(data, lo, hi);
-      return ;
     }
-    int middle = (lo + hi) / 2;
-    mergesort(data, lo, middle, k);
-    mergesort(data, middle + 1, hi, k);
-    merge(data, lo, hi, middle);
+    else{
+      int middle = (lo + hi) / 2;
+      mergesort(data, lo, middle, k);
+      mergesort(data, middle + 1, hi, k);
+      merge(data, lo, hi, middle);
+    }
   }
   private static int[] makeList(int[] data, int lo, int hi){
     int[] newData = new int[hi - lo + 1];
@@ -55,11 +56,10 @@ public class Merge{
     }
   }
   private static void insertionsort(int[] data, int lo, int hi){
-    int len = data.length;
-    for (int i = 1; i < len; ++i) {
+    for (int i = lo; i < hi + 1; ++i) {
       int original = data[i];
       int c = i - 1;
-      while (c >= 0 && data[c] > original) {
+      while (c >= lo && data[c] > original) {
         data[c + 1] = data[c];
         c--;
       }
