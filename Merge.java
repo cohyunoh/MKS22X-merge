@@ -55,13 +55,13 @@ public class Merge{
     //will loop through the data
     for(int i = lo + 1; i <= hi; i++){
       //the copy is a copy of the value we will be shifting
-      int copy = data[i];
+      int temp = data[i];
       int c = i - 1;
       //while the copy is smaller than the one before it shift it back one
-      while(c >= lo && data[c] >= copy){
+      while(c >= lo && data[c] >= temp){
         //swap these two around to shift one
         data[c + 1 ] = data[c];
-        data[c] = copy;
+        data[c] = temp;
         c -= 1;
       //  System.out.println(Arrays.toString(data));
       }
