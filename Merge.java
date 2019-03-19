@@ -51,9 +51,21 @@ public class Merge{
       }
     }
   }
-
-  private static void mergesort(int[]data, int[]temp, int lo, int hi){
-
+  public static void insertionsort(int[] data, int lo, int hi){
+    //will loop through the data
+    for(int i = lo + 1; i <= hi; i++){
+      //the copy is a copy of the value we will be shifting
+      int copy = data[i];
+      int c = i - 1;
+      //while the copy is smaller than the one before it shift it back one
+      while(c >= lo && data[c] >= copy){
+        //swap these two around to shift one
+        data[c + 1 ] = data[c];
+        data[c] = copy;
+        c -= 1;
+      //  System.out.println(Arrays.toString(data));
+      }
+    }
   }
 
   public static void main(String[] args) {
