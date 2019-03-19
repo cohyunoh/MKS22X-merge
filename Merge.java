@@ -3,16 +3,18 @@ import java.util.Random;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
-    mergesort(data, 0, data.length - 1);
+    int k = data.length / 2;
+    mergesort(data, 0, data.length - 1, k);
   }
 
-  private static void mergesort(int[]data, int lo, int hi){
-    if(lo >= hi){
+  private static void mergesort(int[]data, int lo, int hi, int k){
+    if(hi - lo + 1 == k){
+      insertionsort(data, lo, hi);
       return ;
     }
     int middle = (lo + hi) / 2;
-    mergesort(data, lo, middle);
-    mergesort(data, middle + 1, hi);
+    mergesort(data, lo, middle, k);
+    mergesort(data, middle + 1, hi, k);
     merge(data, lo, hi, middle);
   }
   private static int[] makeList(int[] data, int lo, int hi){
@@ -51,7 +53,7 @@ public class Merge{
       }
     }
   }
-  public static void insertionsort(int[] data, int lo, int hi){
+  private  static void insertionsort(int[] data, int lo, int hi){
     //will loop through the data
     for(int i = lo + 1; i <= hi; i++){
       //the copy is a copy of the value we will be shifting
