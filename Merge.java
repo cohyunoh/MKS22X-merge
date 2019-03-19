@@ -5,7 +5,7 @@ public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
     //this value will dictate at what size length the mergesort will use insertion sort (mainly smaller ones);
-    int k = (int)( (float)(data.length) * 0.0001) + 2;
+    int k = (int)( (float)(data.length) * 0.00005) + 2;
     //performs a recursive mergesort from start to end
     mergesort(data, 0, data.length - 1, k);
   }
