@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
-    int k = (int)( (float)(data.length) * 0.00005);
+    int k = (int)( (float)(data.length) * 0.0001) + 2;
     mergesort(data, 0, data.length - 1, k);
   }
 
