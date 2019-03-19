@@ -52,20 +52,24 @@ public class Merge{
     //basically compare the two values at r and l (r is on the right array and l is on the left array) and see which one is the
     //lesser one. Then add the lesser one to the right place on the orginial data array from lo to hi inclusive
     for(int i = lo; i < hi + 1; i++){
+      //if l is past the length of left then just add the value from the right array
       if(l >= left.length){
         if(r < right.length){
           data[i] = right[r];
           r++;
         }
+      //if r is past the length of right then just add the value from the left array
       }else if(r >= right.length){
         if(l < left.length){
           data[i] = left[l];
           l++;
         }
       }else if(l < left.length && r < right.length){
+        //if the value on the left side is less then add it
         if(left[l] < right[r]){
           data[i] = left[l];
           l++;
+        //if the values are equal then have a 50/50 chance on what is selected
         }else if(left[l] == right[r]){
           int choice = Math.abs(rand.nextInt()) % 2;
           if(choice == 0){
@@ -75,6 +79,7 @@ public class Merge{
             data[i] = right[r];
             r++;
           }
+        //otherwise just add the value from the right array
         }else{
           data[i] = right[r];
           r++;
@@ -83,17 +88,22 @@ public class Merge{
     }
   }
   private static void insertionsort(int[] data, int lo, int hi){
+    //loop through the array from lo to hi inclusive
     for (int i = lo; i < hi + 1; ++i) {
+      //this is the value we are inserting
       int original = data[i];
+      //this is the value we are starting from to look backwards
       int c = i - 1;
+      //loop backwards until we reach index lo or we find a value less than our original value
       while (c >= lo && data[c] > original) {
         data[c + 1] = data[c];
         c--;
       }
+      //where ever we are just add the original value there
       data[c + 1] = original;
     }
   }
-
+  /*
   public static void main(String[] args) {
 
     int[] ary = { 1, 9, -10, 55, 55, 500, 0, 5, 22, 55, 59,100 };
@@ -104,4 +114,5 @@ public class Merge{
     System.out.println(Arrays.toString(aryCopy));
     System.out.println(Arrays.equals(aryCopy, ary));
   }
+  */
 }
