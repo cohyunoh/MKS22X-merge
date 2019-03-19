@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.ArrayList;
 public class Merge{
   /*sort the array from least to greatest value. This is a wrapper function*/
   public static void mergesort(int[]data){
@@ -53,20 +54,16 @@ public class Merge{
       }
     }
   }
-  private  static void insertionsort(int[] data, int lo, int hi){
-    //will loop through the data
-    for(int i = lo + 1; i <= hi; i++){
-      //the copy is a copy of the value we will be shifting
-      int temp = data[i];
+  private static void insertionsort(int[] data, int lo, int hi){
+    int len = data.length;
+    for (int i = 1; i < len; ++i) {
+      int original = data[i];
       int c = i - 1;
-      //while the copy is smaller than the one before it shift it back one
-      while(c >= lo && data[c] >= temp){
-        //swap these two around to shift one
-        data[c + 1 ] = data[c];
-        data[c] = temp;
-        c -= 1;
-      //  System.out.println(Arrays.toString(data));
+      while (c >= 0 && data[c] > original) {
+        data[c + 1] = data[c];
+        c--;
       }
+      data[c + 1] = original;
     }
   }
 
